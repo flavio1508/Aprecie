@@ -23,7 +23,7 @@ export default function DataGridColaborador(){
   }, []);
   return(
     <Box 
-      sx={{with:'100%', height: 300,
+      sx={{with:'100%', height: '100%', 
       }}> 
       <DataGrid 
         rows={colaboradores} 
