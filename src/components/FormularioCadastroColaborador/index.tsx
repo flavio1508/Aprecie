@@ -1,10 +1,11 @@
 import { KeyboardBackspace, SaveOutlined } from '@mui/icons-material';
 import { Box, Button, Grid, TextField } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import IColaborador from '../../types/IColaborador';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 const data = {
@@ -13,11 +14,23 @@ const data = {
 
 interface Props {
   token: any
-}
+} 
 
-export default function FormularioCadastroColaborador({token}: Props) {
+export default function FormularioCadastroColaborador({token}: Props) { 
+  const params = useParams();
+  if(params.id){
+    useEffect(() => {
+      axios.get(`http://127.0.0.1:8000/reconhecimentos/colaborador/${params.id}`) 
+        .then(resposta => {
+          setColaborador(resposta.data);
+        })
+        .catch(erro => {
+          console.log(erro);
+        });
+    }, []);
+
+  }
   
-
   const [colaborador, setColaborador] = useState<IColaborador>({
     id: 0,
     nome: '',

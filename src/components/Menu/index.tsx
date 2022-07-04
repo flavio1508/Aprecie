@@ -1,6 +1,6 @@
 import style from './Menu.module.scss';
 import { Link } from 'react-router-dom';
-import logoAprecie from '../../assets/LogoAprecie.png';
+import logoAprecie from '../../assets/logoAprecie.png';
 
 export default function Menu() {
   const rotas = [{ label: 'Colaboradores', to: '/' }, { label: 'Cadastro', to: '/cadastro' }, { label: 'Apreciações', to: '/apreciacoes' }];
